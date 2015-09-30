@@ -11,9 +11,9 @@ class GuessingGame
     guess = @player.get_guess
     count = 1
     until guess == number
-      if (guess - number).abs > 50
+      if (guess - number).abs.between?(50, 99)
         puts "You're so fudging cold! Guess again." 
-      elsif  (guess - number).abs.between?(15, 30)
+      elsif (guess - number).abs.between?(15, 30)
         puts "Brrrr~ You're chilly, but not freezing."
       elsif (guess - number).abs.between?(5, 15)
         puts "You're getting warm!"
@@ -21,7 +21,6 @@ class GuessingGame
         puts "You're so hot!"
       elsif (guess - number).abs == 1
         puts "You're literally on the surface of the sun."
-        
       end
       guess = @player.get_guess
       count += 1
