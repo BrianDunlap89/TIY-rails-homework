@@ -8,8 +8,6 @@ class GuessingGame
 
   def play
     number = rand(1..100)
-    result = nil
-    last_guess = nil
     guess = @player.get_guess
     count = 1
     until guess == number
