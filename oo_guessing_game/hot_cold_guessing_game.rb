@@ -14,7 +14,7 @@ class GuessingGame
       if (guess - number).abs > 50
         puts "You're so fudging cold! Guess again." 
       elsif  (guess - number).abs.between?(15, 30)
-        puts "Brrrr. You're chilly, but not freezing."
+        puts "Brrrr~ You're chilly, but not freezing."
       elsif (guess - number).abs.between?(5, 15)
         puts "You're getting warm!"
       elsif (guess - number).abs.between?(2, 5)
