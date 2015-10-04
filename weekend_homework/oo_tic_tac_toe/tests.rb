@@ -7,12 +7,12 @@ require 'minitest/autorun'
 
 class TicTacToeTest < MiniTest::Test
 
-  # def test_verify_turn_cycle
-  #   game = Game.new(Board.new, Player.new, Player.new)
-  #   assert_equal @player1, @current_player
-  #   game.turn_cycle
-  #   assert_equal @player2, @current_player
-  # end
+  def test_verify_turn_cycle
+    game = Game.new(Board.new, Player.new, Player.new)
+    assert_equal @player1, @current_player
+    game.turn_cycle
+    assert_equal @player2, @current_player
+  end
 
   def test_verify_board_update
     board = Board.new
