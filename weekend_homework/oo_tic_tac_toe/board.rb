@@ -8,7 +8,7 @@ class Board
     @board
   end
 
-  def update_board(guess,mark)
+  def update_board(guess, mark)
     @board[guess - 1] = mark
   end
 
@@ -26,7 +26,7 @@ class Board
   end
 
   def win_game
-    WINS.any? do | x, y, z | 
+    WINS.any? do |x, y, z|
       @board[x] == @board[y] && @board[y] == @board[z]
     end
   end
