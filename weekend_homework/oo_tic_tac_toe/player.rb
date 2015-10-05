@@ -1,6 +1,8 @@
 
 class Player
 
+  attr_reader :player
+
   def initialize
     puts "Would you like to be player 'X' or player 'O'?"
     input = gets.chomp.upcase
@@ -13,10 +15,6 @@ class Player
       input = gets.chomp.upcase
     end
     @player = input
-  end
-
-  def player
-    @player
   end
 
   def take_turn

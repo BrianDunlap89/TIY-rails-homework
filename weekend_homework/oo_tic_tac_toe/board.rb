@@ -1,11 +1,9 @@
 class Board
 
+  attr_reader :board
+
   def initialize
     @board = (1..9).to_a
-  end
-
-  def board
-    @board
   end
 
   def update_board(guess, mark)
