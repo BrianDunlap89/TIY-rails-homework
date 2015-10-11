@@ -197,5 +197,4 @@ module TooDone
   end
 end
 
-# binding.pry
 TooDone::App.start(ARGV)
