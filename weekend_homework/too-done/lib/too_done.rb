@@ -81,7 +81,6 @@ module TooDone
           finished_task.done
           current_list = current_user.lists.find_by(title: options[:list])
           tasks = current_list.tasks
-          binding.pry
           if tasks.any? do |task|
             task.state == false
             puts "Would you like to mark another task as complete? (Y/N)"
@@ -112,26 +111,25 @@ module TooDone
       
       puts "Current List: #{list.title}"
       puts "Current Tasks: "
-      if options[:completed] && options[:sort] == "history"
+      if options[:completed] != nil && options[:sort] == "history"
         display_tasks(tasks)
-      elsif options[:sort] = "history"
+      elsif options[:sort] == "history"
         tasks.each do |task|
           puts task.description if task.state == false
           end
-      elsif options[:completed] && options[:sort] == "overdue"
-        due_date = task.due_date
+      elsif options[:completed] != nil && options[:sort] == "overdue"       
         tasks.each do |task|
-          puts "#{task.description} - due date: #{task.due_date}" if due_date.where (Date.today > :due_date)
+          if task.due_date 
+            puts "#{task.description} - due date: #{task.due_date}" if (Date.today > task.due_date)
+            end
           end
       elsif options[:sort] == "overdue"
-        due_date = task.due_date
         tasks.each do |task|
-          if task.state == false && due_date.where(Date.today > :due_date)
-            puts "#{task.description} - due date: #{task.due_date}"
+          if task.state == false && task.due_date 
+            puts "#{task.description} - due date: #{task.due_date}" if (Date.today > task.due_date)
             end
           end
       else
-        binding.pry
         tasks.order(id: :desc).each { |task| puts task.description }
       end
     end
