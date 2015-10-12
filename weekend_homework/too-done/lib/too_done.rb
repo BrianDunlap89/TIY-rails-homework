@@ -16,6 +16,7 @@ module TooDone
       :desc => "The todo list which the task will be filed under."
     option :date, :aliases => :d,
       :desc => "A Due Date in YYYY-MM-DD format."
+
     def add(task)
       list = current_user.lists.find_or_create_by(title: options[:list])
       if options[:date] != nil
@@ -29,9 +30,11 @@ module TooDone
     desc "edit", "Edit a task from a todo list."
     option :list, :aliases => :l, :default => "Chores",
       :desc => "The todo list whose tasks will be edited."
+    
     def edit
       current_list = current_user.lists.find_by(title: options[:list])
       tasks = current_list.tasks
+
       if current_list && tasks.exists?
         puts "Current List: #{current_list.title}"
         display_tasks(tasks)
@@ -104,8 +107,8 @@ module TooDone
     option :sort, :aliases => :s, :enum => ["history", "overdue"],
       :desc => "Sorting by 'history' (chronological) or 'overdue'.
       \t\t\t\t\tLimits results to those with a due date."
+    
     def show
-
       list = current_user.lists.find_or_create_by(title: options[:list])
       tasks = list.tasks
       
