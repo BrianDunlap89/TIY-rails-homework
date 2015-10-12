@@ -10,5 +10,7 @@ module TooDone
       self.update(state: true)
     end
 
+    # if .state == true, the task has been flagged and marked as complete
+
   end
 end
